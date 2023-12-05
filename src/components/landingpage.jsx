@@ -1,5 +1,6 @@
 import Navbar from "./Navbar.jsx";
 import Footer from "./footer.jsx";
+
 const LandingPage = () => {
      return(
         <div className="min-h-screen m-0">

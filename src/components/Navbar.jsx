@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
+
 import { FaAlignJustify,FaTimes } from 'react-icons/fa';
 
 const Navbar = () => {
