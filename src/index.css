@@ -1,0 +1,29 @@
+
+@import url('https://fonts.googleapis.com/css2?family=Lato&family=Playfair+Display&display=swap');
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer components { 
+  h4{
+    @apply font-Playfair font-bold  text-xl md:text-2xl lg:text-3xl
+  }
+  a:hover{
+    @apply text-hover
+  }
+  .btn{
+    @apply font-Playfair font-bold text-white bg-button w-28 h-10 rounded-xl md:w-32 lg:w-36 transition-shadow shadow-2xl
+  }
+  .btn:hover{
+    @apply font-Playfair font-bold text-white bg-nav w-36 h-10 rounded-xl  md:w-40 lg:w-44 duration-300
+  }
+  .logo{
+    @apply w-36 md:w-48 lg:w-56
+  }
+  .logo:hover{
+    @apply shadow-slate-950
+  }
+  .sect{
+    @apply font-Lato  mt-10
+  }
+}
