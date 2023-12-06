@@ -29,7 +29,7 @@
 }
 
 .logo-animation {
-  animation: scaleIn 3s ease-in-out infinite; 
+  animation: scaleIn 2s ease-in-out infinite; 
 }
 
 @media (max-width: 768px) {
