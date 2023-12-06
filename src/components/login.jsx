@@ -1,5 +1,8 @@
 import { FaArrowLeft, FaArrowRight } from "react-icons/fa";
 import { Link } from "react-router-dom";
+import Group from "../assests/Group.svg";
+import Vector from "../assests/Vector.svg";
+import Group1 from "../assests/Group 1.svg";
 const Login = () => {
     return(
     <main className='min-h-screen'>
@@ -11,9 +14,9 @@ const Login = () => {
           </div>
           <section className="flex flex-col justify-center items-center lg:flex-row">
           <div className="flex justify-center items-center mt-28 mb-24 lg:m-0">
-            <img src="src/assests/Group.svg" alt="group" className="absolute w-40" />
-            <img src="src/assests/Vector.svg" alt="vector" className="absolute w-40" />
-            <img src="src/assests/Group 1.svg" alt="group1" className="absolute w-40" />
+            <img src={Group} alt="group" className="absolute w-40" />
+            <img src={Vector} alt="vector" className="absolute w-40" />
+            <img src={Group1} alt="group1" className="absolute w-40" />
         </div>
         <div className="lg:h-screen flex flex-col">
             <label htmlFor="">Name</label>
