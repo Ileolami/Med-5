@@ -1,6 +1,13 @@
 import Navbar from "./Navbar.jsx";
 import Footer from "./footer.jsx";
 
+import FccLogo from "../assests/FCC-logo.svg";
+import Image from "../assests/images.svg";
+import Reddington from "../assests/redding.svg";
+import NewLogo from "../assests/New-Logo-White@3x-2048x871 1.svg";
+import Group6 from "../assests/Group 6.svg";
+
+
 const LandingPage = () => {
      return(
         <div className="min-h-screen m-0">
@@ -12,7 +19,7 @@ const LandingPage = () => {
             </section>
             <section className="flex flex-col justify-center items-center gap-6 lg:flex-row sect">
                 <div>
-                    <img src="./src/assests/Group 6.svg" alt="" className=" lg:max-w-sm  rolling-image"/>
+                    <img src={Group6} alt="" className=" lg:max-w-sm  rolling-image"/>
                 </div>
                 <div className="flex flex-col italic lg:items-start lg:p-20 lg:text-2xl lg:w-3/5 lg:h-96">
                     <h4 className="text-3xl">MED 5</h4>
@@ -28,11 +35,11 @@ const LandingPage = () => {
             <section className="sect fade-in">
       <h4 className=" underline pb-3">Hospital & Organization</h4>
       <div className="grid grid-cols-2 md:flex md:flex-row lg:flex lg:justify-center lg:items-center lg:gap-10">
-        <img src="./src/assests/FCC-logo.svg" alt="fcclogo" className="logo logo-animation" />
-        <img src="./src/assests/images.svg" alt="images" className="logo logo-animation" />
-        <img src="./src/assests/redding.svg" alt="reddington" className="logo logo-animation" />
+        <img src={FccLogo} alt="fcclogo" className="logo logo-animation" />
+        <img src={Image}alt="images" className="logo logo-animation" />
+        <img src={Reddington} alt="reddington" className="logo logo-animation" />
         <img
-          src="./src/assests/New-Logo-White@3x-2048x871 1.svg"
+          src={NewLogo}
           alt="newlogo"
           className="logo logo-animation"
         />

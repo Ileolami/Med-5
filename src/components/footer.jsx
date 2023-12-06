@@ -1,10 +1,12 @@
 import { Link } from "react-router-dom";
+import Logo from "../assests/logo.svg";
+
 const Footer = () => {
     return (
         <footer className=" bg-footer text-slate-50 h-20 pt-3">
         <div className="flex flex-row justify-around items-center">
             <div>
-                <img src="./src/assests/logo.svg" alt="logo" className="w-6" />
+                <img src={Logo} alt="logo" className="w-6" />
             </div>
             <div>
                 <ul className="flex flex-row gap-4 font-Playfair text-xs">

@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
+import Logo from "../assests/logo.svg";
 
 import { FaAlignJustify,FaTimes } from 'react-icons/fa';
 
@@ -14,7 +15,7 @@ const Navbar = () => {
     <div className="bg-nav bar-contain">
       <header className="container mx-auto flex items-center justify-between p-4 font-Playfair text-white">
         <div className="flex items-center">
-          <img src="logo.svg" alt="med5logo" />
+          <img src={Logo} alt="med5logo" />
         </div>
        
         <nav
