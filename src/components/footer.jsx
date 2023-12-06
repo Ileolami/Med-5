@@ -1,5 +1,8 @@
 import { Link } from "react-router-dom";
 import Logo from "../assests/logo.svg";
+import Linkedin from "../assests/linkedin 1.svg";
+import Facebook from "../assests/facebook 1.svg";
+import Instagram from "../assests/instagram 1.svg";
 
 const Footer = () => {
     return (
@@ -24,9 +27,9 @@ const Footer = () => {
             </div>
             <div>
                 <ul className="flex flex-col lg:flex-row gap-2 ">
-                    <img src="./src/assests/linkedin 1.svg" alt="linkedinlogo" className="w-4"/>
-                    <img src="./src/assests/facebook 1.svg" alt="twitterlogo" className="w-4"/>
-                    <img src="./src/assests/instagram 1.svg" alt="instagramlogo" className="w-4"/>
+                    <img src={Linkedin} alt="linkedinlogo" className="w-4"/>
+                    <img src={Instagram} alt="twitterlogo" className="w-4"/>
+                    <img src={Facebook} alt="instagramlogo" className="w-4"/>
                 </ul>
             </div>
         </div>
