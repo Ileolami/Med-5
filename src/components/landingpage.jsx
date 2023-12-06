@@ -6,6 +6,7 @@ import Image from "../assests/images.svg";
 import Reddington from "../assests/redding.svg";
 import NewLogo from "../assests/New-Logo-White@3x-2048x871 1.svg";
 import Group6 from "../assests/Group 6.svg";
+import Nurse from "../assests/image-nurse.png";
 
 
 const LandingPage = () => {
@@ -48,13 +49,13 @@ const LandingPage = () => {
     </section>
             <section className="sect">
                 <div>
-                    <img src="./src/assests/image-nurse.png" alt="nurse" />
+                    <img src={Nurse} alt="nurse" />
                 </div>
                 <div className="flex flex-col md:flex-row lg:flex-row">
                     <div className=" bg-nav text-white font-Lato h-40 p-6 md:h-56 lg:h-60">
                     <h4 className=" underline pb-3">Mission</h4>
                     <p  className=" text-justify">
-                    Empower Nigerian healthcare through technological 
+                    Empower Healthcare through technological 
                     innovation to bridge the gap in healthcare data management. 
                     Our mission is to revolutionize the traditional documentation 
                     of patient information, ensuring universal access to 
@@ -65,7 +66,7 @@ const LandingPage = () => {
                     <div className=" bg-white text-font font-Lato h-46 p-6 md:h-56 lg:h-60">
                         <h4 className=" underline pb-3">Objectives</h4>
                         <p  className=" text-justify">
-                        To pioneer a paradigm shift in Nigerian healthcare by establishing an 
+                        To pioneer a paradigm shift in Healthcare by establishing an 
                         innovative and comprehensive electronic health record system (EHR). 
                         This system will ensure universal accessibility, data security, 
                         and longevity, empowering individuals with control 
