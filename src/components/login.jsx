@@ -7,7 +7,7 @@ const Login = () => {
           <div className='flex justify-center items-center gap-10 lg:gap-20 font-extralight p-10 sm:p-5 md:p-7 lg:p-10 xl:p-14 flex-row'>
             <Link to="/signup"><FaArrowLeft/></Link>
             <h3 className="text-4xl font-bold font-Playfair underline mb-px">Patients Login</h3>
-           <Link to="/home"><FaArrowRight/></Link>
+           <Link to="/"><FaArrowRight/></Link>
           </div>
           <section className="flex flex-col justify-center items-center lg:flex-row">
           <div className="flex justify-center items-center mt-28 mb-24 lg:m-0">
