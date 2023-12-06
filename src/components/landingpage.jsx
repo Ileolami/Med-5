@@ -45,7 +45,7 @@ const LandingPage = () => {
           className="logo logo-animation"
         />
       </div>
-      <button className="btn">View List</button>
+      <button className="btn mt-5">View List</button>
     </section>
             <section className="sect">
                 <div>
