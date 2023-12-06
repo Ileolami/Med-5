@@ -20,7 +20,7 @@ const Navbar = () => {
        
         <nav
           className={`md:flex ${
-            isMenuOpen ? 'active' : ''
+            isMenuOpen ? 'block' : 'hidden'
           } md:items-center md:w-auto nav-container`}
         >
           <ul className="md:flex flex-col md:flex-row md:space-x-4 md:w-auto menu">
