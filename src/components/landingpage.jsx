@@ -49,7 +49,7 @@ const LandingPage = () => {
     </section>
             <section className="sect">
                 <div>
-                    <img src={Nurse} alt="nurse" />
+                    <img src={Nurse} alt="nurse" className=" max-lg:w-full"/>
                 </div>
                 <div className="flex flex-col md:flex-row lg:flex-row">
                     <div className=" bg-nav text-white font-Lato h-40 p-6 md:h-56 lg:h-60">
