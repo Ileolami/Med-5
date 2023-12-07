@@ -18,6 +18,9 @@ export default {
       fontFamily:{
         Playfair : "'Playfair Display', serif",
         Lato: "'Lato', sans-serif ",
+      },
+      boxShadow:{
+        shadow : "-4px -4px 4px rgba(255, 138, 0, 100%)"
       }
     },
   },

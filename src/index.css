@@ -26,4 +26,16 @@
   .sect{
     @apply font-Lato  mt-10
   }
+  .testimonial{
+    @apply flex flex-col gap-4 rounded-lg p-3 w-60  shadow-shadow
+  }
+  .testimonial img{
+    @apply w-20 h-20 rounded-full ml-12
+  }
+  .testimonial p{
+    @apply font-Lato text-sm text-justify
+  }
+  .testimonial span{
+    @apply font-Playfair text-font italic text-end
+  }
 }
