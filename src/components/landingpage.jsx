@@ -80,7 +80,7 @@ const LandingPage = () => {
                     </div>
                 </div>
             </section>
-            <section className="flex justify-center items-center ">
+            <section className="flex justify-center items-center mt-10">
               <div className="shadow-lg">
               <h4 className=" text-center">Testimonial</h4>
               <div className="flex justify-center items-center text-xs">
