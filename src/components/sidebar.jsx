@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
 import medlogo from "../assests/logo.svg";
-import Avatar from "../assests/avatar.svg";
+import Avatar from "../assests/Avatar.svg";
 import Dash from "../assests/Vector dash.svg"
 import Pat from "../assests/Vector pat.svg"
 import Perm from "../assests/Vector per.svg"
