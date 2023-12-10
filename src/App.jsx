@@ -1,8 +1,9 @@
 import { BrowserRouter,Routes, Route } from "react-router-dom"
 import './App.css'
-import LandingPage from './components/landingpage'
-import Login from './components/login'
-import Signup from './components/signup'
+import LandingPage from './pages/landingpage'
+import Login from './pages/login'
+import Signup from './pages/signup'
+import Dashboard from "./pages/dashboard.jsx";
 
 function App() {
   return (
@@ -12,6 +13,7 @@ function App() {
           <Route path="/" element={<LandingPage/>}/>
           <Route path="/login" element={<Login/>}/>
           <Route path="/signup" element={<Signup/>}/>
+          <Route path="/dashboard" element={<Dashboard/>}/>
         </Routes>
       </BrowserRouter>
     </div>

@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import Logo from "../assests/logo.svg";
 
+
 import { FaAlignJustify,FaTimes } from 'react-icons/fa';
 
 const Navbar = () => {
@@ -40,7 +41,10 @@ const Navbar = () => {
               <Link to="/login">Login</Link>
             </li>
             <li>
-              <Link to="/signup" className="text-hover hover:text-font">
+              <Link to="/dashboard">Dashboard</Link>
+            </li>
+            <li>
+              <Link to="/signup" className="text-hover border-amber-600 hover:text-font">
                 Sign Up
               </Link>
             </li>
