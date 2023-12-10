@@ -30,13 +30,13 @@ const Sidebar = () => {
               Dashboard
             </li>
           </Link>
-          <Link to="/dashboard">
+          <Link to="/dashboard/my-patient">
             <li className="flex gap-3 mb-3">
             <img src={Pat} alt="" className="w-4" />
              Patients
             </li>
           </Link>
-          <Link to="/dashboard/my-patient">
+          <Link to="/dashboard">
             <li className="flex gap-3">
             <img src={Perm} alt="" className="w-4" />
               Permission

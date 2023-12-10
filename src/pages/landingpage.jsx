@@ -1,5 +1,5 @@
 import Navbar from "../components/Navbar.jsx";
-import Footer from "../components/Footer.jsx";
+import Footer from "../components/footer.jsx";
 import Team from "../components/team.jsx";
 import Testimonials from "../components/testimonial.jsx";
 import Choose from "../components/choose.jsx";
