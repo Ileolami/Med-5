@@ -21,11 +21,11 @@ const LandingPage = () => {
         <div className="min-h-screen m-0">
             <Navbar/>
           <main>
-            <section className=" bg-[url(/src/assests/Bg-image.png)] bg-cover bg-center h-80 flex justify-center flex-col items-center"  data-aos="fade-up" data-aos-delay="500">
+            <section className=" bg-[url(/src/assests/Bg-image.png)] bg-cover bg-center h-80 flex justify-center flex-col items-center"  data-aos="fade-down-left" data-aos-delay="500">
                 <p className=" tracking-normal font-Playfair lg:tracking-widest text-white">Leveraging Web5's capabilities, stands at the forefront of healthcare innovation</p>
                 <button className=" mt-9 btn">Get Started</button>
             </section>
-            <section className="flex flex-col justify-center items-center gap-6 lg:flex-row sect" data-aos="fade-up" data-aos-delay="500">
+            <section className="flex flex-col justify-center items-center gap-6 lg:flex-row sect" data-aos="fade-left" data-aos-delay="500">
                 <div>
                     <img src={Group6} alt="" className=" lg:max-w-sm animate-spin-slow" />
                 </div>
@@ -56,7 +56,7 @@ const LandingPage = () => {
                   </div>
                   <button className="btn mt-5">View List</button>
             </section>
-            <section className="sect" data-aos="fade-up" data-aos-delay="500">
+            <section className="sect" data-aos="fade-right" data-aos-delay="500">
                 <div>
                     <img src={Nurse} alt="nurse" className=" max-lg:w-full"/>
                 </div>
@@ -85,13 +85,13 @@ const LandingPage = () => {
                     </div>
                 </div>
             </section>
-            <section className="flex justify-center items-center mt-10" data-aos="fade-up" data-aos-delay="500">
+            <section className="flex justify-center items-center mt-10" data-aos="fade-left" data-aos-delay="500">
               <Testimonials/>
             </section>
-            <section data-aos="fade-up" data-aos-delay="500">
+            <section data-aos="fade-right" data-aos-delay="500">
               <Team/>
             </section>
-            <section className="flex justify-center items-center mt-10" data-aos="fade-up" data-aos-delay="500">
+            <section className="flex justify-center items-center mt-10" data-aos="fade-left" data-aos-delay="500">
              <Choose/>
             </section>
           </main>
