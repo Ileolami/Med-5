@@ -6,7 +6,7 @@ function Choose () {
                 <h4 className="mb-10">Why Choose Us</h4>
                 <div className="flex justify-center items-center">
                   <div>
-                    <img src={Smart} alt="smartlaptop" className="animate-bounce w-56 rounded-full" />
+                    <img src={Smart} alt="smartlaptop" className=" animate-bounce-slow w-56 rounded-full"/>
                   </div>
                   <div>
                   </div>

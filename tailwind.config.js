@@ -21,7 +21,11 @@ export default {
       },
       boxShadow:{
         shadow : "-4px -4px 4px rgba(255, 138, 0, 100%)"
-      }
+      },
+      animation: {
+        'spin-slow': 'spin 3s linear infinite',
+        'bounce-slow' : 'bounce 2s infinite',
+      },
     },
   },
   plugins: [],
