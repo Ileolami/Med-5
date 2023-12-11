@@ -8,6 +8,12 @@
   h4{
     @apply font-Playfair font-bold  text-xl md:text-2xl lg:text-3xl
   }
+  h1{
+    @apply font-Playfair font-bold text-2xl md:text-3xl lg:text-4xl
+  }
+  input{
+    @apply font-Lato text-sm text-font border-solid border-2 border-slate-900 rounded-lg p-2
+  }
   a:hover{
     @apply text-hover
   }
@@ -38,4 +44,45 @@
   .testimonial span{
     @apply font-Playfair text-font italic text-end
   }
+  .users{
+    @apply flex gap-6 mb-6 md:gap-20 lg:gap-40 border-solid border-b-2 p-2 border-slate-900
+  }
+  .users img{
+    @apply w-12 h-12 rounded-full md:w-14 md:h-14 lg:w-16 lg:h-16
+  }
+  .users img:hover{
+    @apply shadow-slate-950
+  }
+  .users-a{
+    @apply flex gap-4 
+  }
+  .users-b{
+    @apply text-center mt-2
+  }
+  .users button{
+    @apply font-Playfair font-bold text-white bg-button w-24 h-10  md:w-32 lg:w-36 transition-shadow shadow-2xl
+  }
+  .users button:hover{
+    @apply font-Playfair font-bold text-white bg-nav w-24 h-10  md:w-32 lg:w-36 duration-300
+  }
+  .case{
+    @apply flex gap-4 text-white bg-font p-4 w-2/3 rounded-lg shadow-shadow
+  }
+  .case img{
+    @apply w-10 h-10 rounded-full 
+  }
+ .case h1{
+    @apply font-Playfair font-bold text-xl text-hover
+  }
+ 
+  .schedule{
+    @apply flex justify-center items-center gap-8 mb-6 lg:gap-12
+  }
+  .schedule img{
+    @apply w-12 h-12 rounded-full md:w-14 md:h-14 lg:w-16 lg:h-16
+  }
+ .schedule p{
+  @apply text-gray-400
+ }
+ 
 }

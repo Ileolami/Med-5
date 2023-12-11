@@ -24,7 +24,7 @@ const Sidebar = () => {
         </div>
         <div className="flex justify-center items-center mt-10">
         <ul className="flex gap-7 md:flex-col lg:flex-col">
-          <Link to="/dashboard">
+          <Link to="/dashboard/overview">
             <li className="flex gap-3  mb-3">
               <img src={Dash} alt="" className="w-4" />
               Dashboard

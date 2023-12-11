@@ -4,6 +4,8 @@ import Group from "../assests/Group.svg";
 import Vector from "../assests/Vector.svg";
 import Group1 from "../assests/Group 1.svg";
 const Login = () => {
+
+  
     return(
     <main className='min-h-screen'>
         <form action="" className=" bg-nav text-white  m-4 mr-10 p-10 h-2/6 rounded-3xl shadow-2xl sm:max sm:m-36">

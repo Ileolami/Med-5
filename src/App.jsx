@@ -5,9 +5,9 @@ import Login from './pages/login'
 import Signup from './pages/signup'
 import Dashboard from "./pages/dashboard.jsx";
 import Patients from "./pages/patient.jsx"
+import Overview from "./pages/overview.jsx"
 import AOS from 'aos';
-import 'aos/dist/aos.css'; // You can also use <link> for styles
-// ..
+import 'aos/dist/aos.css'; 
 
 function App() {
   AOS.init();
@@ -22,6 +22,7 @@ function App() {
           element={<Dashboard/>}
           >
           <Route path="my-patient" element={<Patients/>}/>
+          <Route path="overview" element={<Overview/>}/>
           </Route>
         </Routes>
       </BrowserRouter>
