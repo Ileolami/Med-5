@@ -8,7 +8,7 @@ import Perm from "../assests/Vector per.svg"
 
 const Sidebar = () => {
     return (
-        <div className=" bg-nav text-white h-80 w-screen md:w-1/5 md:h-screen lg:w-1/6 lg:h-screen m-0 p-5">
+        <div className=" bg-nav text-white h-80 w-screen text-sm md:w-1/5 md:h-screen lg:w-1/6 lg:max-h-screen lg:text-sm m-0 p-5">
         <div className="flex justify-center items-center">
           <div>
             <div>
@@ -27,7 +27,7 @@ const Sidebar = () => {
           <Link to="/dashboard/overview">
             <li className="flex gap-3  mb-3">
               <img src={Dash} alt="" className="w-4" />
-              Dashboard
+              Overview
             </li>
           </Link>
           <Link to="/dashboard/my-record">

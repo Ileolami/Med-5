@@ -24,6 +24,7 @@ function Permission(){
                         </div>
                        <div className="flex gap-5 ml-4">
                        <div><input type="checkbox" name="" id="" /><label htmlFor="">Read only</label></div>
+                       
                         <div><input type="checkbox" name="" id="" /><label htmlFor="">Read & Write</label></div>
                        </div>
                         <div><button className="font-Playfair font-bold text-white bg-button w-24 h-10 rounded-lg md:w-32 lg:w-36 hover:text-white hover:bg-nav">
@@ -86,24 +87,7 @@ function Permission(){
                     <button>Remove Access</button>
                 </div>
             </div> 
-            <div className="users" data-aos="fade-up" data-aos-delay="500">
-                <div className="users-a">
-                    <div>
-                    <img src={Ochuko2} alt="ochuko2" /> 
-                    </div>
-                    <div className="users-b">
-                        <h5>John Hopkin Hospital</h5>
-                        <p>23-Aug-2023</p>
-                    </div>    
-                </div>
-                <div className="users-b">
-                    <h5>Status Only</h5>
-                    <p>Read & Write</p>
-                </div>
-                <div>
-                    <button>Remove Access</button>
-                </div>
-            </div>
+            
          </div>
             </div>
             </section>          

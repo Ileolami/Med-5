@@ -8,7 +8,7 @@ import Ochuko from "../assests/ochuko.svg";
 const Overview = () => {
     return (
         <div className="min-h-screen">
-           <main className="flex justify-center items-center md:ml-12 md:justify-center lg:flex lg:justify-between">
+           <main className="flex justify-center items-center md:ml-12 md:justify-center lg:flex lg:justify-between lg:text-sm">
   <section>
     <div className="mt-4">
       <h1>Welcome Back</h1>

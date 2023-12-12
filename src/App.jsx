@@ -21,9 +21,9 @@ function App() {
           <Route path="/signup" element={<Signup/>}/>
           <Route exact path="/dashboard" 
           element={<Dashboard/>}
-          >
+          > <Route index="true" element={<Overview/>}/>
+            <Route path="overview" element={<Overview/>}/>
           <Route path="my-record" element={<Patients/>}/>
-          <Route path="overview" element={<Overview/>}/>
           <Route path="my-permission" element={<Permission/>}/>
           </Route>
         </Routes>

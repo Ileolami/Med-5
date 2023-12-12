@@ -45,7 +45,7 @@
     @apply font-Playfair text-font italic text-end
   }
   .users{
-    @apply flex gap-6 mb-6 md:gap-20 lg:gap-40 border-solid border-b-2 p-2 border-slate-900
+    @apply flex gap-6 mb-2 md:gap-20 lg:gap-40 border-solid border-b-2 p-2 border-slate-900
   }
   .users img{
     @apply w-12 h-12 rounded-full md:w-14 md:h-14 lg:w-16 lg:h-16
