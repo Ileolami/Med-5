@@ -11,9 +11,9 @@ const Overview = () => {
            <main className="flex justify-center items-center md:ml-12 md:justify-center lg:flex lg:justify-between">
   <section>
     <div className="mt-4">
-      <p>How are you feeling today ?😊</p>
       <h1>Welcome Back</h1>
-      <h2 className=" text-hover text-2xl">Dr. Justine</h2>
+      <h2 className=" text-hover text-2xl">Hi Esther</h2> 
+      <p>How are you feeling today ?😊</p>
     </div>
     <div className="flex flex-col lg:flex-row ">
       <div className="shadow-lg p-2">
@@ -88,7 +88,12 @@ const Overview = () => {
         </div>
       </div>
       <div>
-        
+        <div>
+
+        </div>
+        <div>
+          patients
+        </div>
       </div>
     </div>
   </section>

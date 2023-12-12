@@ -4,8 +4,9 @@ import LandingPage from './pages/landingpage'
 import Login from './pages/login'
 import Signup from './pages/signup'
 import Dashboard from "./pages/dashboard.jsx";
-import Patients from "./pages/patient.jsx"
+import Patients from "./pages/record.jsx"
 import Overview from "./pages/overview.jsx"
+import Permission from "./pages/permission.jsx"
 import AOS from 'aos';
 import 'aos/dist/aos.css'; 
 
@@ -21,8 +22,9 @@ function App() {
           <Route exact path="/dashboard" 
           element={<Dashboard/>}
           >
-          <Route path="my-patient" element={<Patients/>}/>
+          <Route path="my-record" element={<Patients/>}/>
           <Route path="overview" element={<Overview/>}/>
+          <Route path="my-permission" element={<Permission/>}/>
           </Route>
         </Routes>
       </BrowserRouter>
