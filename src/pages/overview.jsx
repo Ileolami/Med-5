@@ -1,103 +1,78 @@
-import Solve from "../assests/solve.svg";
-import Unsolve from "../assests/unsolve.svg";
-import Active from "../assests/active.svg";
-import Adewale from "../assests/adewale.svg";
-import Fega from "../assests/fega.svg";
 import Esther from "../assests/esther.svg";
-import Ochuko from "../assests/ochuko.svg";
+import Adewale from "../assests/adewale.svg";
+import Hopstial from "../assests/Hospital.svg";
+import Fega from "../assests/fega.svg";
+import Mecure from "../assests/mediocre.svg";
 const Overview = () => {
     return (
-        <div className="min-h-screen">
-           <main className="flex justify-center items-center md:ml-12 md:justify-center lg:flex lg:justify-between lg:text-sm">
-  <section>
-    <div className="mt-4">
-      <h1>Welcome Back</h1>
-      <h2 className=" text-hover text-2xl">Hi Esther</h2> 
-      <p>How are you feeling today ?😊</p>
-    </div>
-    <div className="flex flex-col lg:flex-row ">
-      <div className="shadow-lg p-2">
-        <div className="flex mb-6 mt-6 gap-4 ">
-          <div className="case">
-            <div> <img src={Solve} alt="solve" /></div>
-            <div>
-              <h1>28</h1>
-              <p>Solved Case</p>
+        <div className="flex items-start  ml-0 md:ml-10 lg:ml-0">
+          <main className=" ">
+            <div className="flex items-start gap-2 flex-col m-3">
+              <h4>Welcome Back </h4>
+              <h5 className=" font-Lato text-sm text-hover">Hi Esther !</h5>
+              <p className="font-Playfair text-font font-semibold italic">How are doing ?</p>
             </div>
-          </div>
-          <div className="case">
-            <div> <img src={Unsolve} alt="unsolve" /></div>
-            <div>
-              <h1>10</h1>
-              <p>Unsolved Case</p>
-            </div>
-          </div>
-          <div className="case">
-            <div> <img src={Active} alt="active" /></div>
-            <div>
-              <h1>4</h1>
-              <p>Active Case</p>
-            </div>
-          </div>
-        </div>
-        <div className="">
-          <h1 className="mb-6 ">Today Appointment</h1>
-          <div className="flex justify-start mx-8 ">
-            <div>
-              <div className="schedule">
-                <div>9:00am</div>
-                <div className="flex gap-6">
-                  <div>
-                    <img src={Adewale} alt="adewale"/>
-                  </div>
-                  <div>
-                    <h6>Mr. Adewale</h6>
-                    <p>Consultation</p>
-                  </div>
+            <div className="general-one flex flex-col lg:flex-row gap-20 h-96">
+            <section className="bg-font text-lg shadow-slate-950 py-4">
+              <div className="flex justify-center gap-10  text-white w-full p-10 h-48 lg:w-max lg:">
+                <div className="flex flex-col justify-center items-start ">
+                  <p><span className="text-hover">Sex: </span> Female</p>
+                  <p><span  className="text-hover">Last check-in: </span>24 feb, 2020</p>
+                  <p><span className="text-hover">Surgery-type: </span>None</p>
+                  <p><span className="text-hover">Last Diagnosis: </span>Malaria</p>
                 </div>
-                <div>On going...</div>  
-              </div>
-              <div className="schedule">
-                <div>9:00am</div>
-                <div className="flex gap-6">
-                  <div>
-                    <img src={Fega} alt="adewale"/>
-                  </div>
-                  <div>
-                    <h6>Mrs.Adewale</h6>
-                    <p>Checkup</p>
-                  </div>
+                <div className="flex justify-center flex-col items-center">
+                  <img src={Esther} alt="Esther" />
+                  <p className="text-hover underline">View Profile</p>
                 </div>
-                <div>25-Dec-22023</div>
               </div>
-              <div className="schedule">
-                <div>11:00am</div>
-                <div className="flex gap-6">
-                  <div>
-                    <img src={Esther} alt="adewale"/>
-                  </div>
-                  <div>
-                    <h6>Miss. Gloria</h6>
-                    <p>Consultation</p>
-                  </div>
+              <div className=" flex justify-center font-serif gap-8 text-white">
+                <div>
+                  <h3>BLOOD</h3>
+                  <p>A+</p>
                 </div>
-                <div>23-Dec-2023</div>
+                <div>
+                  <h3>WEIGHT</h3>
+                  <p>80kg</p>
+                </div>
+                <div>
+                  <h3>HEIGHT</h3>
+                  <p>170cm</p>
+                </div>
               </div>
+            </section>
+            <section className=" flex flex-col gap-5rounded-lg shadow-2xl shadow-slate-950 lg:w-96">
+              <div className="flex justify-around border-solid border-b-2 border-slate-900 shadow-lg">
+                <div>
+                <img src={Adewale} alt="" className="lg:w-12" />
+                <p>Doctor Adewale</p>
+                </div>
+                <button className="mt-6 hover:bg-font font-Playfair font-bold text-white bg-button w-24 h-10  md:w-32 lg:w-32 ">Remove Access</button>
+              </div>
+              <div className="flex justify-around border-solid border-b-2  border-slate-900 shadow-lg">
+                <div>
+                  <img src={Mecure} alt="" className="lg:w-12" />
+                  <p>Mecure</p>
+                  </div>
+                  <button className="mt-6 hover:bg-font font-Playfair font-bold text-white bg-button w-24 h-10  md:w-32 lg:w-36 ">Remove Access</button>
+              </div>
+              <div className="flex justify-around border-solid border-b-2 border-slate-900 shadow-lg">
+                <div>
+                  <img src={Hopstial} alt="" className="lg:w-12"/>
+                  <p>General Hospital</p>
+                  </div>
+                  <button className="mt-6 hover:bg-font font-Playfair font-bold text-white bg-button w-24 h-10  md:w-32 lg:w-36 ">Remove Access</button>
+              </div>
+              <div className="flex justify-around border-solid border-b-2 p-2 border-slate-900 shadow-lg">
+                <div>
+                  <img src={Fega} alt="" className="lg:w-12"/>
+                  <p>Doctor Esther</p>
+                  </div>
+                  <button className="mt-6 hover:bg-font font-Playfair font-bold text-white bg-button w-24 h-10  md:w-32 lg:w-36 ">Remove Access</button>
+              </div>
+            </section>
             </div>
-          </div>
-        </div>
-      </div>
-      <div>
-        <div>
-
-        </div>
-        <div>
-          patients
-        </div>
-      </div>
-    </div>
-  </section>
-</main>
+          </main>
         </div>
     );
 };
