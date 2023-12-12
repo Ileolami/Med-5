@@ -6,6 +6,8 @@ import { Web5Provider } from './Utils/Web5Provider.jsx'
 
 ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>
-    <App/>
+   <Web5Provider>
+   <App/>
+   </Web5Provider>
   </React.StrictMode>,
 )
