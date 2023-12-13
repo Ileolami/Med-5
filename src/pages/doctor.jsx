@@ -64,6 +64,12 @@ const Overview = () => {
           .required("Patient First name is required"),
       lastName: Yup.string()
       .required("Patient Last name is required"),
+      email: Yup.string()
+      .required("Patient email is required"),
+      phone: Yup.string()
+      .required("Patient phone number is required"),
+      address: Yup.string()
+      .required("Patient address is required"),
     });
 
   const formik = useFormik({
@@ -171,7 +177,7 @@ const Overview = () => {
                     {...formik.getFieldProps('address')}
                   />
                   {formik.touched.address && formik.errors.address && (
-                      <div className="text-red">{formik.errors.address}</div>
+                      <div className="text-red-600">{formik.errors.address}</div>
                   )}
                   <input
                     type="email"
