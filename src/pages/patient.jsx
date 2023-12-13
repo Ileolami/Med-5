@@ -15,7 +15,7 @@ const Patient = () => {
           <main className=" ">
             <div className="flex items-start gap-2 flex-col m-3">
               <h4>Welcome Back </h4>
-              <h5 className=" font-Lato text-sm text-hover">Hi Esther !</h5>
+              <h5 className=" font-Lato text-sm text-hover">Hi Patient !</h5>
               <p className="font-Playfair text-font font-semibold italic">How are doing ?</p>
             </div>
             <div className="general-one flex flex-col lg:flex-row gap-20 h-96">
