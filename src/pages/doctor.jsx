@@ -12,6 +12,8 @@ import protocolDefinition from '../assests/Web5Protocol';
 const Overview = () => {
   const {web5, myDID} = useContext(Web5Context)
 
+
+  
     console.log(myDID);
     const protocolConfig = async () => {
       const { protocols, status } = await web5.protocols.query({
@@ -49,7 +51,7 @@ const Overview = () => {
         }
     });
 
-  console.log('Protocol configured', configureStatus, protocol);
+      console.log('Protocol configured', configureStatus, protocol);
     }
 
   
@@ -92,7 +94,7 @@ const Overview = () => {
 
             //create new record in the dwn
             try {
-              const { recored } = await web5.dwn.records.create({
+              const { record } = await web5.dwn.records.create({
                 data: patientData,
                 message: {
                   protocol: protocolDefinition.protocol,
