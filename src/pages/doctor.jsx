@@ -66,6 +66,12 @@ const Overview = () => {
           .required("Patient First name is required"),
       lastName: Yup.string()
       .required("Patient Last name is required"),
+      email: Yup.string()
+      .required("Patient email is required"),
+      phone: Yup.string()
+      .required("Patient phone number is required"),
+      address: Yup.string()
+      .required("Patient address is required"),
     });
 
   const formik = useFormik({
@@ -122,10 +128,10 @@ const Overview = () => {
     return (
       <>
         <div className="flex flex-col h-screen">
-          <div className="flex justify-between">
+          <div className="flex flex-col md:flex-row lg:flex-row lg:justify-between">
             <Sidebar />
-            <div className="flex justify-center items-center flex-grow">
-              <div className="w-full max-w-md p-8 bg-font rounded-lg shadow-md">
+            <div className="flex lg:justify-center lg:items-center flex-grow">
+              <div className="w-full max-w-md p-8 bg-font rounded-lg shadow-lg shadow-slate-950 md:m-10 md:h-3/6 lg:h-5/6 lg:max-w-screen-sm" data-aos="fade-right">
                 <h2 className="text-2xl font-semibold mb-4 text-center text-white">New Patient Record</h2>
                 <form onSubmit={formik.handleSubmit} className="flex flex-col">
                    <input
@@ -136,7 +142,7 @@ const Overview = () => {
                       {...formik.getFieldProps('patientDID')}
                     />
                     {formik.touched.patientDID && formik.errors.patientDID && (
-                        <div className="text-white">{formik.errors.patientDID}</div>
+                        <div className=" font-bold text-red-600">{formik.errors.patientDID}</div>
                     )}
 
                   <div className="flex mt-2">
@@ -149,7 +155,7 @@ const Overview = () => {
                         {...formik.getFieldProps('firstName')}
                       />
                       {formik.touched.firstName && formik.errors.firstName && (
-                          <div className="text-white">{formik.errors.firstName}</div>
+                          <div className="font-bold text-red-600">{formik.errors.firstName}</div>
                       )}
                     </div>
                     <div className="w-1/2 ml-2">
@@ -161,7 +167,7 @@ const Overview = () => {
                         {...formik.getFieldProps('lastName')}
                       />
                       {formik.touched.lastName && formik.errors.lastName && (
-                          <div className="text-white">{formik.errors.lastName}</div>
+                          <div className="font-bold text-red-600">{formik.errors.lastName}</div>
                       )}
                     </div>
                   </div>
@@ -173,7 +179,7 @@ const Overview = () => {
                     {...formik.getFieldProps('address')}
                   />
                   {formik.touched.address && formik.errors.address && (
-                      <div className="text-white">{formik.errors.address}</div>
+                      <div className="text-red-600">{formik.errors.address}</div>
                   )}
                   <input
                     type="email"
@@ -183,7 +189,7 @@ const Overview = () => {
                     {...formik.getFieldProps('email')}
                   />
                   {formik.touched.email && formik.errors.email && (
-                      <div className="text-white">{formik.errors.email}</div>
+                      <div className="font-bold text-red-600">{formik.errors.email}</div>
                   )}
                   <input
                     type="tel"
@@ -193,7 +199,7 @@ const Overview = () => {
                     {...formik.getFieldProps('phone')}
                   />
                   {formik.touched.phone && formik.errors.phone && (
-                      <div className="text-white">{formik.errors.phone}</div>
+                      <div className="font-bold text-red-600">{formik.errors.phone}</div>
                   )}
                   
                   <textarea
@@ -205,11 +211,13 @@ const Overview = () => {
                   ></textarea>
                       
                   {formik.touched.health_record && formik.errors.health_record && (
-                      <div className="text-white">{formik.errors.health_record}</div>
+                      <div className="font-bold text-red-600">{formik.errors.health_record}</div>
                   )}
-                  <button type="submit" className="bg-blue-500 hover:bg-blue-700 text-white p-2 mt-4 rounded self-end">
+                 <div>
+                 <button type="submit" className="bg-hover hover:bg-orange-700 hover:w-20 transition duration-500 ease-in-out shadow-lg shadow-yellow-800 text-white p-2 mt-4 rounded self-end">
                     Submit
                   </button>
+                 </div>
                 </form>
               </div>
             </div>
