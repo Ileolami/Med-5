@@ -18,30 +18,36 @@ const Sidebar = () => {
                 </div>
               <div>
               <img src={Avatar} alt="Avatar" className=" w-32 lg:w-40" />
-                <p className=" text-hover underline">view patient</p>
+                {/* <p className=" text-hover underline">view patient</p> */}
               </div>
           </div>
         </div>
         <div className="flex justify-center items-center mt-10">
         <ul className="flex gap-7 md:flex-col lg:flex-col">
-          <Link to="/dashboard/overview">
+          <Link to="/dashboard">
             <li className="flex gap-3  mb-3">
               <img src={Dash} alt="" className="w-4" />
-              Overview
+              Dashboard
             </li>
           </Link>
-          <Link to="/dashboard/my-record">
+          <Link to="/dashboard/doctor">
+            <li className="flex gap-3  mb-3">
+              <img src={Dash} alt="" className="w-4" />
+              Doctor
+            </li>
+          </Link>
+          <Link to="/dashboard/patient">
             <li className="flex gap-3 mb-3">
             <img src={Pat} alt="" className="w-4" />
-             My Record
+             Patient
             </li>
           </Link>
-          <Link to="/dashboard/my-permission">
+          {/* <Link to="/dashboard/my-permission">
             <li className="flex gap-3">
             <img src={Perm} alt="" className="w-4" />
               Permission
             </li>
-          </Link>
+          </Link> */}
         </ul>
         </div>
       </div>

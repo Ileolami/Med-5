@@ -1,12 +1,9 @@
 import { BrowserRouter,Routes, Route, Navigate } from "react-router-dom"
 import './App.css'
 import LandingPage from './pages/landingpage'
-import Login from './pages/login'
-import Signup from './pages/signup'
 import Dashboard from "./pages/dashboard.jsx";
-import Patients from "./pages/record.jsx"
-import Overview from "./pages/overview.jsx"
-import Permission from "./pages/permission.jsx"
+import Patients from "./pages/patient.jsx"
+import Doctor from "./pages/doctor.jsx"
 import AOS from 'aos';
 import 'aos/dist/aos.css'; 
 
@@ -17,15 +14,9 @@ function App() {
       <BrowserRouter>
         <Routes>
           <Route path="/" element={<LandingPage/>}/>
-          <Route path="/login" element={<Login/>}/>
-          <Route path="/signup" element={<Signup/>}/>
-          <Route exact path="/dashboard" 
-          element={<Dashboard/>}
-          > <Route index="true" element={<Overview/>}/>
-            <Route path="overview" element={<Overview/>}/>
-          <Route path="my-record" element={<Patients/>}/>
-          <Route path="my-permission" element={<Permission/>}/>
-          </Route>
+          <Route exact path="/dashboard" element={<Dashboard/>} />
+            <Route path="/dashboard/doctor" element={<Doctor/>}/>
+            <Route path="/dashboard/patient" element={<Patients/>}/>
         </Routes>
       </BrowserRouter>
     </div>
