@@ -1,0 +1,34 @@
+{
+    "protocol": "https://med-5.vercel.app/",
+    "published": true,
+    "types": {
+        "patientRecord": {
+          "schema": "https://med-5.vercel.app/schemas/patientRecord.json",
+          "dataFormats": ["application/json"]
+        }
+    },
+    "structure": {
+      "patientRecord": {
+            "$actions": [
+                {
+                    "who": "anyone",
+                    "can": "read"
+                },
+                {
+                    "who": "author",
+                    "can": "write"
+                },
+                {
+                    "who": "author",
+                    "of": "patientRecord",
+                    "can": "read"
+                },
+                {
+                    "who": "recipient",
+                    "of": "patientRecord",
+                    "can": "read"
+                }
+            ]
+        }
+    }
+}

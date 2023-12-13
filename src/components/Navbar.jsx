@@ -28,26 +28,15 @@ const Navbar = () => {
             <li>
               <Link to="/">Home</Link>
             </li>
-            <li>
-              <Link to="/hospitals">Hospitals</Link>
-            </li>
+           
             <li>
               <Link to="/about">About Us</Link>
             </li>
-            <li>
-              <Link to="/contact">Contact</Link>
-            </li>
-            <li>
-              <Link to="/login">Login</Link>
-            </li>
+           
             <li>
               <Link to="/dashboard">Dashboard</Link>
             </li>
-            <li>
-              <Link to="/signup" className="text-hover border-amber-600 hover:text-font">
-                Sign Up
-              </Link>
-            </li>
+           
           </ul>
         </nav>
         <div className="md:hidden">

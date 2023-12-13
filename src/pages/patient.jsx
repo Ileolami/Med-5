@@ -3,9 +3,15 @@ import Adewale from "../assests/adewale.svg";
 import Hopstial from "../assests/Hospital.svg";
 import Fega from "../assests/fega.svg";
 import Mecure from "../assests/mediocre.svg";
-const Overview = () => {
+import { useContext } from "react";
+import { Web5Context } from "../Utils/Web5Provider";
+import Sidebar from "../components/sidebar";
+const Patient = () => {
+  const {web5, myDID} = useContext(Web5Context)
+    console.log(myDID);
     return (
-        <div className="flex items-start  ml-0 md:ml-10 lg:ml-0">
+      <div className="flex h-screen flex-col md:flex-row lg:flex-row">
+                <Sidebar />
           <main className=" ">
             <div className="flex items-start gap-2 flex-col m-3">
               <h4>Welcome Back </h4>
@@ -76,4 +82,4 @@ const Overview = () => {
         </div>
     );
 };
-export default Overview;
+export default Patient;
