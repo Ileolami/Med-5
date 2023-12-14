@@ -7,53 +7,18 @@ import { useFormik } from "formik";
 import * as Yup from 'yup';
 import "yup-phone";
 import Swal from 'sweetalert2'
-import protocolDefinition from '../assests/Web5Protocol';
+import protocolDefinition from '../assests/Web5Protocol/protocol.json';
 
 const Overview = () => {
   const {web5, myDID} = useContext(Web5Context)
 
 
   
-    console.log(myDID);
-    const protocolConfig = async () => {
-      const { protocols, status } = await web5.protocols.query({
-        message: {
-          filter: {
-            protocol: protocolDefinition.protocol,
-          }
-        }
-      });
+    // console.log(myDID);
+    
+    
 
-      if(status.code !== 200) {
-        Swal.fire({  
-          icon: 'error',  
-          text: 'Error querying protocols',
-        });
-        console.error('Error querying protocols', status);
-        return;
-      }
-
-       // if the protocol already exists, we return
-      if(protocols.length > 0) {
-        Swal.fire({  
-          icon: 'error',  
-          text: 'Protocol already exists',
-        });
-        console.log('Protocol already exists');
-        return;
-      }
-
-
-    // configure protocol on local DWN
-    const { status: configureStatus, protocol } = await web5.dwn.protocols.configure({
-        message: {
-            definition: protocolDefinition,
-        }
-    });
-
-      console.log('Protocol configured', configureStatus, protocol);
-    }
-
+   
   
 
 
@@ -98,19 +63,35 @@ const Overview = () => {
               "address": values.address
             };
 
-            //create new record in the dwn
-            try {
-              const { record } = await web5.dwn.records.create({
+            const writeToDwn = async (patientData) => {
+              const record = await web5.dwn.records.write({
                 data: patientData,
                 message: {
-                  protocol: protocolDefinition.protocol,
-                  protocolPath: 'health_record',
-                  schema: protocolDefinition.types.health_record.schema,
-                  dataFormat: protocolDefinition.types.health_record.dataFormats[0],
-                  recipient:  values.patientDID
-                }
+                  protocol: "https://med-5.vercel.app/patientRecord",
+                  protocolPath: "patientRecord",
+                  schema: "https://med-5.vercel.app/schema/patientRecord",
+                  recipient: values.patientDID,
+                },
               });
-              console.log(patientData);
+              return record;
+            };
+
+            // const sendRecord = async (record) => {
+            //   console.log(record);
+            //   return await record.send(values.patientDID);
+            // };
+            //create new record in the dwn
+            try {
+             
+              const {record, status } = await writeToDwn(patientData);
+             
+              console.log(record, status.code);
+              if (status.code === 202) {
+                console.log("Send record status", status);
+                
+              }else {
+                console.log('Record not sent', record);
+              }
               /* 
                 |---------------------------------------------------------------------------------------|
                   Heads up create record in doctors dwn, send same recored to patient and
@@ -122,7 +103,6 @@ const Overview = () => {
             }
        
          
-         console.log(patientData);
       },
   });
     return (
