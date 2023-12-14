@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useContext, useState } from 'react';
 import { Link } from 'react-router-dom';
 import Logo from "../assests/logo.svg";
 
@@ -8,10 +8,12 @@ import { FaAlignJustify,FaTimes } from 'react-icons/fa';
 const Navbar = () => {
   const [isMenuOpen, setMenuOpen] = useState(false);
 
+
   const toggleMenu = () => {
     setMenuOpen(prevState => !prevState);
   };
 
+  
   return (
     <div className="bg-nav bar-contain">
       <header className="container mx-auto flex items-center justify-between p-4 font-Playfair text-white" data-aos="fade-down" data-aos-delay="500">

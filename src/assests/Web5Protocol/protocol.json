@@ -1,9 +1,9 @@
 {
-    "protocol": "https://med-5.vercel.app/",
+    "protocol": "https://med-5.vercel.app/patientRecord",
     "published": true,
     "types": {
         "patientRecord": {
-          "schema": "https://med-5.vercel.app/schemas/patientRecord.json",
+          "schema": "https://med-5.vercel.app/patientRecord",
           "dataFormats": ["application/json"]
         }
     },
