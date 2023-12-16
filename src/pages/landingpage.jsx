@@ -3,7 +3,7 @@ import Footer from "../components/footer.jsx";
 import Team from "../components/team.jsx";
 import Testimonials from "../components/testimonial.jsx";
 import Choose from "../components/choose.jsx";
-
+import { Link } from "react-router-dom";
 
 
 import FccLogo from "../assests/FCC-logo.svg";
@@ -23,7 +23,9 @@ const LandingPage = () => {
           <main>
             <section className=" bg-[url(/src/assests/Bg-image.png)] bg-cover bg-center h-80 flex justify-center flex-col items-center"  data-aos="fade-down-left" data-aos-delay="500">
                 <p className=" tracking-normal font-Playfair lg:tracking-widest text-white">Leveraging Web5's capabilities, stands at the forefront of healthcare innovation</p>
-                <button className=" mt-9 btn">Get Started</button>
+                <button className=" mt-9 btn">
+                  <Link to="/dashboard">Get Started</Link>
+                </button>
             </section>
             <section className="flex flex-col justify-center items-center gap-6 lg:flex-row sect" data-aos="fade-left" data-aos-delay="500">
                 <div>

@@ -15,8 +15,11 @@ const Navbar = () => {
   return (
     <div className="bg-nav bar-contain">
       <header className="container mx-auto flex items-center justify-between p-4 font-Playfair text-white" data-aos="fade-down" data-aos-delay="500">
-        <div className="flex items-center">
-          <img src={Logo} alt="med5logo" />
+        <div className="flex items-center gap-5">
+          <img src={Logo} alt="med5logo" /> 
+          <p className='text-hover italic text-xs p-2 border-orange-800 border-2 border-solid '>
+            experimental
+          </p>
         </div>
        
         <nav
