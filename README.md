@@ -1,6 +1,6 @@
 # Med 5
 
-# Description (Experimental)
+# Description
 Med 5 is an healthcare service that manages the database of the patients and also keep track of their diagnosis status and the progress of the treatment. This service was created as a due to the pressing issues in :
 1. managing the database of the patients
 2. inaccessibility of patients' comprehensive treatment plans, diagnoses, and medical histories. 
