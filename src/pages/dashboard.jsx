@@ -1,4 +1,4 @@
-import { useContext } from 'react';
+import { useContext, useState } from 'react';
 import {Link, Outlet} from 'react-router-dom';
 import Sidebar from '../components/sidebar.jsx';
 import { Web5Context } from '../Utils/Web5Provider.jsx';
@@ -7,11 +7,33 @@ import patientImage from '../assests/esther.svg'
 
 const Dashboard = () => {
     const {web5, myDID} = useContext(Web5Context)
+    const [didCopied, setDidCopied] = useState(false);
+
+    const handleCopyDid = async () => {
+        if (myDID) {
+          try {
+            await navigator.clipboard.writeText(myDID);
+            setDidCopied(true);
+            console.log("DID copied to clipboard");
+     
+            setTimeout(() => {
+              setDidCopied(false);
+            }, 3000);
+          } catch (err) {
+            console.log("Failed to copy DID: " + err);
+          }
+        }
+    };
+    
     console.log(myDID);
     return (
         <>
             <div className="flex h-screen flex-col md:flex-row lg:flex-row">
-                <Sidebar />
+                <Sidebar 
+                    // handleCopyDid={handleCopyDid}
+                    // isWeb5Connected={!!web5 && !!myDID}
+                    // didCopied={didCopied}
+                />
                 <div className="flex-1 flex flex-col gap-4 justify-between p-4 my-12 md:flex-row md:justify-center md:my-6 md:gap-2 lg:flex-row lg:justify-around lg:gap-3">
                     <div className=" bg-font text-white rounded-lg p-4 w-90 mt-2 md:h-72 md:w-1/2 lg:w-3/6 lg:h-80 shadow-2xl shadow-slate-900 " data-aos="fade-left">
                         <h2 className="text-xl font-semibold mb-4">Patient</h2>

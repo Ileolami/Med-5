@@ -42,6 +42,11 @@ const Sidebar = () => {
              Patient
             </li>
           </Link>
+          {/* {isWeb5Connected && (
+        <button className="fixed-button button" id="copy-did-button" onClick={handleCopyDid}>
+            {didCopied ? "DID Copied!" : "Copy DID"}
+        </button>
+        )} */}
           {/* <Link to="/dashboard/my-permission">
             <li className="flex gap-3">
             <img src={Perm} alt="" className="w-4" />
