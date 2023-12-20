@@ -1,16 +1,15 @@
 
 import patientImage from "../assests/esther.svg";
-import { useContext } from "react";
+import { useContext, useState } from "react";
 import { Web5Context } from "../Utils/Web5Provider";
 import Sidebar from "../components/sidebar";
 import { useFormik } from "formik";
 import * as Yup from 'yup';
 import "yup-phone";
 import Swal from 'sweetalert2'
-import protocolDefinition from '../assests/Web5Protocol/protocol.json';
-
 const Overview = () => {
   const {web5, myDID} = useContext(Web5Context)
+  // const { patientRecord, setPatientRecord } = useState([]);
 
 
   
@@ -51,9 +50,10 @@ const Overview = () => {
       },
       validationSchema: validationSchema,
       onSubmit: async (values) => {
+            const recipientDID = values.patientDID;
             let patientData = {
-              "@type": "healthRecord",
-              "recipient": values.patientDID,
+              // "@type": "healthRecord",
+              "recipient": recipientDID,
               "author": myDID,
               "health_record": values.health_record,
               "firstName": values.firstName,
@@ -63,48 +63,85 @@ const Overview = () => {
               "address": values.address
             };
 
-            const writeToDwn = async (patientData) => {
-              const record = await web5.dwn.records.write({
-                data: patientData,
-                message: {
-                  protocol: "https://med-5.vercel.app/patientRecord",
-                  protocolPath: "patientRecord",
-                  schema: "https://med-5.vercel.app/schema/patientRecord",
-                  recipient: values.patientDID,
-                },
-              });
-              return record;
-            };
+            
 
-            // const sendRecord = async (record) => {
-            //   console.log(record);
-            //   return await record.send(values.patientDID);
-            // };
+            
             //create new record in the dwn
             try {
-             
-              const {record, status } = await writeToDwn(patientData);
-             
-              console.log(record, status.code);
-              if (status.code === 202) {
-                console.log("Send record status", status);
                 
-              }else {
-                console.log('Record not sent', record);
-              }
-              /* 
-                |---------------------------------------------------------------------------------------|
-                  Heads up create record in doctors dwn, send same recored to patient and
-                  automatically make the patient author
-                |---------------------------------------------------------------------------------------|
-              */
+                const { record, status } = await web5.dwn.records.write({
+                  data: patientData,
+                  message: {
+                    protocol: "https://github.com/sirval",
+                    protocolPath: "patientRecord",
+                    schema: "https://med-5.vercel.app/schema/patientRecord",
+                    recipient: recipientDID,
+                  },
+                });
+          
+                if (status.code === 200) {
+                  console.log(record);
+                  return { ...patientData, recordId: record.id };
+                }else {
+                  console.log(record);
+                }
+
+                console.log('Record written to DWN', { record, status });
+                if (record) {
+                  const { status } = await record.send(recipientDID);
+                  console.log("Send record", status);
+                  
+                } else {
+                  throw new Error('Failed to create record');
+                }
+                // return record;
+
+
+
+              // const writeToDwn = async (patientData) => {
+              //   const record = await web5.dwn.records.write({
+              //     data: patientData,
+              //     message: {
+              //       protocol: "https://github.com/sirval",
+              //       protocolPath: "patientRecord",
+              //       schema: "https://med-5.vercel.app/schema/patientRecord",
+              //       recipient: recipientDID,
+              //       published: true,
+              //     },
+              //   });
+              //   return record;
+              // };
+             
+              // const writeToDwnResponse = await writeToDwn(patientData);
+              
+              // if (writeToDwnResponse?.status?.code === 202) {
+              //   const sentDataResponse = await writeToDwnResponse?.record.send(recipientDID);
+              //   console.log(sentDataResponse);
+              // }
+              // console.log(record, status.code);
+              // if (status.code === 202) {
+              //     console.log("Send record status", status);
+              //    const sentData = await record.send(recipientDID);
+              //    console.log(sentData);
+              // }else {
+              //   console.log('Record not sent', record);
+              // }
+              
             } catch (error) {
               console.log(error);
             }
        
          
       },
+
   });
+
+  // const fetchRecords = async () => {
+  //   const userMessages = await fetchUserMessages();
+  //   const directMessages = await fetchDirectMessages();
+  //   const allMessages = [...(userMessages || []), ...(directMessages || [])];
+  //   setMessages(allMessages);
+  // };
     return (
       <>
         <div className="flex flex-col h-screen">
