@@ -19,14 +19,12 @@ export const Web5Provider = ({ children }) => {
 
     const connectToWeb5 = async () => {
       try {
-        const { web5: connectedWeb5, did: connectedDID } = await Web5.connect({
-          sync: '5s',
-        });
+        const { web5: connectedWeb5, did: connectedDID } = await Web5.connect();
         setWeb5(connectedWeb5);
         setMyDID(connectedDID);
        
         if (connectedWeb5 && connectedDID) {
-          await protocolConfig(connectedWeb5, connectedDID);
+          await configureProtocol(connectedWeb5, connectedDID);
         }else{
           console.log('hey');
         }
@@ -36,91 +34,98 @@ export const Web5Provider = ({ children }) => {
             icon: 'error',
             text: 'Failed to connect to Web5',
         });
-        console.error('Failed to connect to Web5:', error);
+        
       }
     };
 
     connectToWeb5();
 
-    const protocolConfig = async (web5, did) => {
-      const protocolDefinition = await createProtocolDefinition();
+    const configureProtocol = async (web5, myDID) => {
+      const protocolDefinition = newProtocolDefinition();
+      const protocolUrl = protocolDefinition.protocol;
   
-      const { protocols: appProtocol, status: appProtocolStatus } =
-        await queryForProtocol(web5);
-      console.log({ appProtocol, appProtocolStatus });
-      if (appProtocolStatus.code !== 200 || appProtocol.length === 0) {
+      // const { protocols: localProtocols, status: localProtocolStatus } = await queryLocalProtocol(web5, protocolUrl);
+      // if (localProtocolStatus.code !== 200 || localProtocols.length === 0) {
+      //   const result = await installLocalProtocol(web5, protocolDefinition);
+      //   console.log({ result })
+      //   console.log("Protocol installed locally");
+      // }
   
-        const { protocol, status } = await installProtocol(web5, protocolDefinition);
-        console.log("Protocol installed locally", protocol, status);
-  
-        const { status: configureRemoteStatus } = await protocol.send(did);
-        console.log("Did the protocol install on the remote DWN?", configureRemoteStatus);
-      } else {
-        console.log("Protocol already installed");
+      const { protocols: remoteProtocols, status: remoteProtocolStatus } = await queryRemoteProtocol(web5, myDID, protocolUrl);
+      if (remoteProtocolStatus.code !== 200 || remoteProtocols.length === 0) {
+        const result = await installRemoteProtocol(web5, myDID, protocolDefinition);
+        console.log({ result })
+        console.log("Protocol installed remotely");
       }
     };
+    
   }, []);
 
-  console.log('web5', web5);
-  console.log('did', myDID);
-  const createProtocolDefinition = () => {
-    const decentralizedHealthRecord =  {
-      "protocol": "https://med-5.vercel.app/patientRecord",
-      "published": true,
-      "types": {
-          "patientRecord": {
-            "schema": "https://med-5.vercel.app/schema/patientRecord",
-            "dataFormats": ["application/json"]
-          }
+  
+
+  const newProtocolDefinition = () => {
+    return {
+      protocol: "https://github.com/sirval",
+      published: true,
+      types: {
+        patientRecord: {
+          schema: "https://med-5.vercel.app/schema/patientRecord",
+          dataFormats: ["application/json"],
+        },
+       
       },
-      "structure": {
-        "patientRecord": {
-              "$actions": [
-                  {
-                      "who": "anyone",
-                      "can": "read"
-                  },
-                  {
-                      "who": "author",
-                      "of": "patientRecord",
-                      "can": "write"
-                  },
-                  {
-                      "who": "author",
-                      "of": "patientRecord",
-                      "can": "read"
-                  },
-                  {
-                      "who": "recipient",
-                      "of": "patientRecord",
-                      "can": "read"
-                  }
-              ],
-          },
+      structure: {
+        patientRecord: {
+          $actions: [
+            // { who: "author", of: "patientRecord", can: "write" },
+            // { who: "recipient", of: "patientRecord", can: "write" },
+            { who: "anyone", can: "read" },
+            { who: "anyone", can: "write" },
+          ],
+        },
       },
     };
-    return decentralizedHealthRecord;
-  }
+  };
 
-  const queryForProtocol = async (web5) => {
+  // const queryLocalProtocol = async (web5) => {
+  //   return await web5.dwn.protocols.query({
+  //     message: {
+  //       filter: {
+  //         protocol: "https://github.com/sirval",
+  //       },
+  //     },
+  //   });
+  // };
+
+
+  const queryRemoteProtocol = async (web5, myDID) => {
     return await web5.dwn.protocols.query({
+      from: myDID,
       message: {
         filter: {
-          protocol: "https://med-5.vercel.app/patientRecord",
+          protocol: "https://github.com/sirval",
         },
       },
     });
   };
 
-  const installProtocol = async (web5, protocolDefinition) => {
-    return await web5.dwn.protocols.configure({
+  // const installLocalProtocol = async (web5, protocolDefinition) => {
+  //   return await web5.dwn.protocols.configure({
+  //     message: {
+  //       definition: protocolDefinition,
+  //     },
+  //   });
+  // };
+
+  const installRemoteProtocol = async (web5, myDID, protocolDefinition) => {
+    const { protocol } = await web5.dwn.protocols.configure({
       message: {
         definition: protocolDefinition,
       },
     });
+    console.log('Remote protocol installed');
+    return await protocol.send(myDID);
   };
-
- 
 
   return (
     <>
