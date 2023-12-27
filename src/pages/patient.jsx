@@ -9,49 +9,9 @@ import Swal from "sweetalert2";
 import protocolDefinition from "../assests/Web5Protocol/protocol.json";
 
 const Overview = () => {
-  const { web5, myDID } = useContext(Web5Context);
-  const [patientData, setPatientData] = useState([]);
+  const { web5, myDID, patientData } = useContext(Web5Context);
 
   // console.log(myDID);
-
-  const readAllDataFromDWNForDid = async () => {
-    const response = await web5.dwn.records.query({
-      from: myDID,
-      message: {
-        filter: {
-          schema: "https://med-5.vercel.app/schema/patientRecord",
-          dataFormat: "application/json",
-        },
-      },
-    });
-
-    let num = 1;
-
-    let arr = [];
-
-    for (const record of response.records) {
-      let { record: readRecord } = await web5.dwn.records.read({
-        message: {
-          filter: {
-            recordId: record.id,
-          },
-        },
-      });
-
-      // assuming the record has a text payload
-      const text = await readRecord.data.text();
-
-      arr.push(JSON.parse(text));
-
-      num += 1;
-    }
-
-    setPatientData(arr);
-  };
-
-  useEffect(() => {
-    readAllDataFromDWNForDid();
-  }, [myDID]);
 
   console.log(patientData);
 
