@@ -164,7 +164,7 @@ export const Web5Provider = ({ children }) => {
   return (
     <>
       {web5 && myDID && (
-        <Web5Context.Provider value={{ web5, myDID }}>
+        <Web5Context.Provider value={{ web5, myDID, patientData }}>
           {children}
         </Web5Context.Provider>
       )}
