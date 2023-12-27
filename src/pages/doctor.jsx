@@ -13,7 +13,7 @@ const Overview = () => {
 
 
   
-    // console.log(myDID);
+    // console.log({myDID});
     
     
 
