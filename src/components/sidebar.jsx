@@ -17,12 +17,12 @@ const Sidebar = () => {
                 </a>
                 </div>
               <div>
-              <img src={Avatar} alt="Avatar" className=" w-32 lg:w-40" />
-                {/* <p className=" text-hover underline">view patient</p> */}
+              <img src={Avatar} alt="Avatar" className=" w-32 lg:w-40 " />
+                <button className="bg-hover hover:bg-orange-700 hover:w-20 transition duration-500 ease-in-out shadow-lg shadow-yellow-800 text-white p-2 mt-4 rounded self-end">Copy DID</button>
               </div>
           </div>
         </div>
-        <div className="flex justify-center items-center mt-10">
+        <div className="flex justify-center items-center mt-8">
         <ul className="flex gap-7 md:flex-col lg:flex-col">
           <Link to="/dashboard">
             <li className="flex gap-3  mb-3">
