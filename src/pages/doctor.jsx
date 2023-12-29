@@ -7,6 +7,7 @@ import { useFormik } from "formik";
 import * as Yup from 'yup';
 import "yup-phone";
 import Swal from 'sweetalert2'
+import toast from "react-hot-toast";
 const Overview = () => {
   const {web5, myDID} = useContext(Web5Context)
   // const { patientRecord, setPatientRecord } = useState([]);
@@ -49,7 +50,7 @@ const Overview = () => {
         address: '',
       },
       validationSchema: validationSchema,
-      onSubmit: async (values) => {
+      onSubmit: async (values, { setSubmitting, resetForm }) => {
             const recipientDID = values.patientDID;
             let patientData = {
               // "@type": "healthRecord",
@@ -78,7 +79,9 @@ const Overview = () => {
                     recipient: recipientDID,
                   },
                 });
-          
+                setSubmitting(false);
+                resetForm();
+                toast.success("Submit Successfully!");
                 if (status.code === 200) {
                   console.log(record);
                   return { ...patientData, recordId: record.id };

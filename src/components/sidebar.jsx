@@ -1,12 +1,15 @@
-import { useState } from "react";
 import { Link } from "react-router-dom";
 import medlogo from "../assests/logo.svg";
 import Avatar from "../assests/Avatar.svg";
 import Dash from "../assests/Vector dash.svg"
 import Pat from "../assests/Vector pat.svg"
-import Perm from "../assests/Vector per.svg"
+import Copy from "copy-to-clipboard";
+import { Web5Context } from "../Utils/Web5Provider";
+import { useContext } from "react";
+import toast from "react-hot-toast";
 
 const Sidebar = () => {
+  const { myDID} = useContext(Web5Context);
     return (
         <div className=" bg-nav text-white h-80 w-screen text-sm md:w-1/5 md:h-screen lg:w-1/6 lg:max-h-screen lg:text-sm m-0 p-5">
         <div className="flex justify-center items-center">
@@ -18,7 +21,8 @@ const Sidebar = () => {
                 </div>
               <div>
               <img src={Avatar} alt="Avatar" className=" w-32 lg:w-40 " />
-                <button className="bg-hover hover:bg-orange-700 hover:w-20 transition duration-500 ease-in-out shadow-lg shadow-yellow-800 text-white p-2 mt-4 rounded self-end">Copy DID</button>
+                <button onClick = {() => {Copy(myDID);toast.success("copied!")}}
+                className="bg-hover hover:bg-orange-700 hover:w-20 transition duration-500 ease-in-out shadow-lg shadow-yellow-800 text-white p-2 mt-4 rounded self-end">Copy DID</button>
               </div>
           </div>
         </div>
