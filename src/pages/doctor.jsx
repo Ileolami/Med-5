@@ -162,7 +162,7 @@ const Overview = () => {
                       {...formik.getFieldProps('patientDID')}
                     />
                     {formik.touched.patientDID && formik.errors.patientDID && (
-                        <div className=" font-bold text-red-600">{formik.errors.patientDID}</div>
+                        <div className=" font-light text-red-600">{formik.errors.patientDID}</div>
                     )}
 
                   <div className="flex mt-2">
@@ -175,7 +175,7 @@ const Overview = () => {
                         {...formik.getFieldProps('firstName')}
                       />
                       {formik.touched.firstName && formik.errors.firstName && (
-                          <div className="font-bold text-red-600">{formik.errors.firstName}</div>
+                          <div className="font-light text-red-600">{formik.errors.firstName}</div>
                       )}
                     </div>
                     <div className="w-1/2 ml-2">
@@ -187,19 +187,19 @@ const Overview = () => {
                         {...formik.getFieldProps('lastName')}
                       />
                       {formik.touched.lastName && formik.errors.lastName && (
-                          <div className="font-bold text-red-600">{formik.errors.lastName}</div>
+                          <div className="font-light text-red-600">{formik.errors.lastName}</div>
                       )}
                     </div>
                   </div>
                   <input
                     type="text"
                     name="address"
-                    className="w-full mt-2 p-2 mt-2 border rounded"
+                    className="w-full mt-2 p-2 border rounded"
                     placeholder="Address"
                     {...formik.getFieldProps('address')}
                   />
                   {formik.touched.address && formik.errors.address && (
-                      <div className="text-red-600">{formik.errors.address}</div>
+                      <div className="font-light text-red-600">{formik.errors.address}</div>
                   )}
                   <input
                     type="email"
@@ -209,7 +209,7 @@ const Overview = () => {
                     {...formik.getFieldProps('email')}
                   />
                   {formik.touched.email && formik.errors.email && (
-                      <div className="font-bold text-red-600">{formik.errors.email}</div>
+                      <div className="font-light text-red-600">{formik.errors.email}</div>
                   )}
                   <input
                     type="tel"
@@ -219,7 +219,7 @@ const Overview = () => {
                     {...formik.getFieldProps('phone')}
                   />
                   {formik.touched.phone && formik.errors.phone && (
-                      <div className="font-bold text-red-600">{formik.errors.phone}</div>
+                      <div className=" font-light text-red-600">{formik.errors.phone}</div>
                   )}
                   
                   <textarea
@@ -231,7 +231,7 @@ const Overview = () => {
                   ></textarea>
                       
                   {formik.touched.health_record && formik.errors.health_record && (
-                      <div className="font-bold text-red-600">{formik.errors.health_record}</div>
+                      <div className="font-light text-red-600">{formik.errors.health_record}</div>
                   )}
                  <div>
                  <button type="submit" className="bg-hover hover:bg-orange-700 hover:w-20 transition duration-500 ease-in-out shadow-lg shadow-yellow-800 text-white p-2 mt-4 rounded self-end">
