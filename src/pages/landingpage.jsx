@@ -87,13 +87,13 @@ const LandingPage = () => {
                     </div>
                 </div>
             </section>
-            <section className="flex justify-center items-center mt-10" data-aos="fade-left" data-aos-delay="500">
+            <section className="flex justify-center items-center mt-10" data-aos="fade-up" data-aos-delay="500">
               <Testimonials/>
             </section>
-            <section data-aos="fade-right" data-aos-delay="500">
+            <section data-aos="fade-up" data-aos-delay="500">
               <Team/>
             </section>
-            <section className="flex justify-center items-center mt-10" data-aos="fade-left" data-aos-delay="500">
+            <section className="flex justify-center items-center mt-10" data-aos="fade-up" data-aos-delay="500">
              <Choose/>
             </section>
           </main>

@@ -7,11 +7,27 @@ import Copy from "copy-to-clipboard";
 import { Web5Context } from "../Utils/Web5Provider";
 import { useContext } from "react";
 import toast from "react-hot-toast";
-
+import { useState, useEffect } from 'react';
 const Sidebar = () => {
   const { myDID} = useContext(Web5Context);
+  const [height, setHeight] = useState('h-screen');
+
+  const checkScroll = () => {
+    if (window.pageYOffset > 50) {
+      setHeight('h-full');
+    } else {
+      setHeight('h-screen');
+    }
+  };
+
+  useEffect(() => {
+    window.addEventListener('scroll', checkScroll);
+    return () => {
+      window.removeEventListener('scroll', checkScroll);
+    };
+  }, []);
     return (
-        <div className=" bg-nav text-white h-80 w-screen text-sm md:w-1/5 md:h-screen lg:w-1/6 lg:max-h-screen lg:text-sm m-0 p-5">
+      <div className={`bg-nav text-white w-screen text-sm md:w-2/6 md:${height} lg:w-1/6 lg:${height} lg:text-sm m-0 p-5`}>
         <div className="flex justify-center items-center">
           <div>
             <div>

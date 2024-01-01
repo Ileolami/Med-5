@@ -33,7 +33,9 @@
   font-size: 28px;
   font-weight: bold;
 }
-
+.heighty{
+  height: 7000px;
+}
 .close:hover,
 .close:focus {
   color: black;
