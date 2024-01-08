@@ -1,5 +1,5 @@
 import patientImage from "../assests/esther.svg";
-import { useContext} from "react";
+import { useContext, useState } from "react";
 import { Web5Context } from "../Utils/Web5Provider";
 import Sidebar from "../components/sidebar";
 import { useFormik } from "formik";
@@ -10,6 +10,8 @@ import protocolDefinition from "../assests/Web5Protocol/protocol.json";
 
 const Overview = () => {
   const { web5, myDID, patientData } = useContext(Web5Context);
+
+  const [action, setAction] = useState("");
 
   // console.log(myDID);
 
@@ -53,13 +55,59 @@ const Overview = () => {
                       Record {_index + 1}
                     </h1>
                     <div className="flex flex-col items-start lg:flex-row lg:gap-3 ">
-                    <p><span className=" text-hover font-Lato">Name</span>: {item?.firstName} {item?.lastName}</p> 
-                    <p><span className=" text-hover font-Lato">Email</span>: {item?.email}</p>
+                      <p>
+                        <span className=" text-hover font-Lato">Name</span>:{" "}
+                        {item?.firstName} {item?.lastName}
+                      </p>
+                      <p>
+                        <span className=" text-hover font-Lato">Email</span>:{" "}
+                        {item?.email}
+                      </p>
                     </div>
-                  <div className=" text-left"> <p><span className=" text-hover font-Lato">Address</span>: {item?.address}</p></div>
-                  <div className="flex justify-start"> <p><span className=" text-hover font-Lato">Phone</span>: {item?.phone}</p></div>
+                    <div className=" text-left">
+                      {" "}
+                      <p>
+                        <span className=" text-hover font-Lato">Address</span>:{" "}
+                        {item?.address}
+                      </p>
+                    </div>
                     <div className="flex justify-start">
-                    <p><span className=" text-hover font-Lato">Medical Record</span>: {item?.health_record}</p>
+                      {" "}
+                      <p>
+                        <span className=" text-hover font-Lato">Phone</span>:{" "}
+                        {item?.phone}
+                      </p>
+                    </div>
+                    <div className="flex justify-start">
+                      <p>
+                        <span className=" text-hover font-Lato">
+                          Medical Record
+                        </span>
+                        : {item?.health_record}
+                      </p>
+                    </div>
+
+                    {/* trigger */}
+
+                    <div className="flex justify-start gap-2">
+                      <input className="" type="text" placeholder="user did" />
+                    </div>
+
+                    {/* trigger */}
+
+                    <div className="flex justify-start gap-2 text-sm mt-2">
+                      <p
+                        onClick={() => setAction("add")}
+                        className="bg-green-500 p-2 rounded text-white font-medium hover:bg-green-400 cursor-pointer"
+                      >
+                        add access
+                      </p>
+                      <p
+                        onClick={() => setAction("remove")}
+                        className="bg-red-500 p-2 rounded text-white font-medium hover:bg-red-400 cursor-pointer"
+                      >
+                        remove access
+                      </p>
                     </div>
                   </div>
                 ))}
