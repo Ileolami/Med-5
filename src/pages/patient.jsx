@@ -1,38 +1,50 @@
-import patientImage from "../assests/esther.svg";
 import { useContext, useState } from "react";
 import { Web5Context } from "../Utils/Web5Provider";
 import Sidebar from "../components/sidebar";
-import { useFormik } from "formik";
-import * as Yup from "yup";
+
 import "yup-phone";
-import Swal from "sweetalert2";
 import protocolDefinition from "../assests/Web5Protocol/protocol.json";
 
 const Overview = () => {
   const { web5, myDID, patientData } = useContext(Web5Context);
 
-  const [action, setAction] = useState("");
+  const [userDid, setUserDid] = useState("");
 
   // console.log(myDID);
 
   console.log(patientData);
 
-  // const writeToDwn = async (patientData) => {
-  //   const { record } = await web5.dwn.records.write({
-  //     data: patientData,
-  //     message: {
-  //       protocol: "https://med-5.vercel.app/patientRecord",
-  //       protocolPath: "patientRecord",
-  //       schema: "https://med-5.vercel.app/schema/patientRecord",
-  //       recipient: myDID,
-  //     },
-  //   });
-  //   return record;
-  // };
+  async function grantPermission(_recordId) {
+    try {
+      const record = await web5.dwn.records.get(
+        "bafyreihcff3wwovefcdqec2zwfnittmkdfhnl4j6rebologkcecq2mpwjm"
+      );
 
-  // const sendRecord = async (record) => {
-  //   return await record.send(myDID);
-  // };
+      record.metadata.permissions[userDid] = "read";
+
+      await web5.dwn.records.update(record);
+
+      console.log("Permissions added successfully for user DID:", userDid);
+    } catch (error) {
+      console.error("Error adding permissions:", error);
+    }
+  }
+
+  async function revokePermission(recordId, userDid) {
+    try {
+      const record = await Web5.dwn.records.get(recordId);
+
+      // 2. Remove the user DID from the permissions metadata
+      delete record.metadata.permissions[userDid];
+
+      // 3. Republish the record with updated permissions
+      await Web5.dwn.records.update(record);
+
+      console.log("Permissions removed successfully for user DID:", userDid);
+    } catch (error) {
+      console.error("Error removing permissions:", error);
+    }
+  }
 
   return (
     <>
@@ -90,20 +102,25 @@ const Overview = () => {
                     {/* trigger */}
 
                     <div className="flex justify-start gap-2">
-                      <input className="" type="text" placeholder="user did" />
+                      <input
+                        onChange={(e) => setUserDid(e.target.value)}
+                        className=""
+                        type="text"
+                        placeholder="user did"
+                      />
                     </div>
 
                     {/* trigger */}
 
                     <div className="flex justify-start gap-2 text-sm mt-2">
                       <p
-                        onClick={() => setAction("add")}
+                        onClick={() => grantPermission("1")}
                         className="bg-green-500 p-2 rounded text-white font-medium hover:bg-green-400 cursor-pointer"
                       >
                         add access
                       </p>
                       <p
-                        onClick={() => setAction("remove")}
+                        onClick={() => revokePermission(patientData, _index)}
                         className="bg-red-500 p-2 rounded text-white font-medium hover:bg-red-400 cursor-pointer"
                       >
                         remove access

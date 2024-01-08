@@ -101,6 +101,8 @@ export const Web5Provider = ({ children }) => {
       // const text = await readRecord.data.text();
       const text = await record.data.text();
 
+      console.log({ record });
+
       arr.push(JSON.parse(text));
 
       num += 1;
