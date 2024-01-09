@@ -101,6 +101,42 @@ export const Web5Provider = ({ children }) => {
     setPatientData(arr);
   };
 
+  const readUserRecord = async (userDID) => {
+    const response = await web5.dwn.records.query({
+      // from: "did:ion:EiDnuQlQo06W1ov8nTrIe6kN3ZiqR5crOU25cWmPwMB6vw:eyJkZWx0YSI6eyJwYXRjaGVzIjpbeyJhY3Rpb24iOiJyZXBsYWNlIiwiZG9jdW1lbnQiOnsicHVibGljS2V5cyI6W3siaWQiOiJkd24tc2lnIiwicHVibGljS2V5SndrIjp7ImNydiI6IkVkMjU1MTkiLCJrdHkiOiJPS1AiLCJ4Ijoid3QyZjhOZ3g4NEJTLV9uSjNELVUwT2FUdjVSdUVaeW5sYzQtamtSVUxLVSJ9LCJwdXJwb3NlcyI6WyJhdXRoZW50aWNhdGlvbiJdLCJ0eXBlIjoiSnNvbldlYktleTIwMjAifSx7ImlkIjoiZHduLWVuYyIsInB1YmxpY0tleUp3ayI6eyJjcnYiOiJzZWNwMjU2azEiLCJrdHkiOiJFQyIsIngiOiJFMFdJZHJGdmtrTzlUREtrWE9EYzFHZGgwQnNDU29YaVV4QzhWYWlrUnRvIiwieSI6IjBKTTQ1R2Q0X3Q0a3Q0dTJUbUZUdTFKRU1DT2RHbmdOYnJiZ25JTXNnUHMifSwicHVycG9zZXMiOlsia2V5QWdyZWVtZW50Il0sInR5cGUiOiJKc29uV2ViS2V5MjAyMCJ9XSwic2VydmljZXMiOlt7ImlkIjoiZHduIiwic2VydmljZUVuZHBvaW50Ijp7ImVuY3J5cHRpb25LZXlzIjpbIiNkd24tZW5jIl0sIm5vZGVzIjpbImh0dHBzOi8vZHduLnRiZGRldi5vcmcvZHduMyIsImh0dHBzOi8vZHduLnRiZGRldi5vcmcvZHduNiJdLCJzaWduaW5nS2V5cyI6WyIjZHduLXNpZyJdfSwidHlwZSI6IkRlY2VudHJhbGl6ZWRXZWJOb2RlIn1dfX1dLCJ1cGRhdGVDb21taXRtZW50IjoiRWlENV9VaWo3SlJTZlphZW1HMVItVjdlc2dwd2E1T0xiLWtZcjVyVVhlbzljZyJ9LCJzdWZmaXhEYXRhIjp7ImRlbHRhSGFzaCI6IkVpQklrY3hidnl0UTUyRjlRNjRIRXBKb2hvcDRLYkRsMy1MbVpMdFBaS1ZEZlEiLCJyZWNvdmVyeUNvbW1pdG1lbnQiOiJFaUNtaXYzaUhWYUYwTDNHdUxUVnRMUmoybUN2SVNlQktCNUZCT1VjUTZkMVpnIn19",
+      from: userDID,
+      message: {
+        filter: {
+          schema: "https://med-5.vercel.app/schema/patientRecord",
+          dataFormat: "application/json",
+          protocol: "https://github.com/sirval",
+          protocolPath: "patientRecord",
+        },
+      },
+    });
+
+    let num = 1;
+
+    let arr = [];
+
+    // console.log({ response });
+
+    for (const record of response.records) {
+      // console.log(record._contextId);
+
+      const text = await record.data.text();
+
+      let datatoPush = JSON.parse(text);
+
+      datatoPush = { ...datatoPush, recordId: record._contextId };
+
+      arr.push(datatoPush);
+
+      num += 1;
+    }
+    return arr;
+  };
+
   const newProtocolDefinition = () => {
     return {
       protocol: "https://github.com/sirval",
@@ -166,7 +202,9 @@ export const Web5Provider = ({ children }) => {
   return (
     <>
       {web5 && myDID && (
-        <Web5Context.Provider value={{ web5, myDID, patientData }}>
+        <Web5Context.Provider
+          value={{ web5, myDID, patientData, readUserRecord }}
+        >
           {children}
         </Web5Context.Provider>
       )}

@@ -5,7 +5,7 @@ import "yup-phone";
 import toast from "react-hot-toast";
 
 const Overview = () => {
-  const { web5, myDID, patientData } = useContext(Web5Context);
+  const { web5, myDID, patientData, readUserRecord } = useContext(Web5Context);
 
   const [userDid, setUserDid] = useState("");
 
@@ -26,7 +26,7 @@ const Overview = () => {
 
       await record.send(myDID);
 
-      toast.success("Submit Successfully!");
+      toast.success("access granted");
       if (status.code === 200) {
         console.log(record);
         return { ...patientData, recordId: record.id };
@@ -50,6 +50,19 @@ const Overview = () => {
 
   async function revokePermission(record) {
     console.log(record);
+    let userRecord = await readUserRecord(userDid);
+
+    const filteredUserRecord = userRecord.filter((user) => {
+      // Exclude the 'recordId' field from the comparison
+      const userWithoutRecordId = { ...user };
+      delete userWithoutRecordId.recordId;
+      delete record.recordId;
+
+      return JSON.stringify(userWithoutRecordId) === JSON.stringify(record);
+    });
+
+    console.log(filteredUserRecord);
+
     try {
       const { protocols } = await web5.dwn.records.query({
         recipient: userDid,
@@ -60,12 +73,14 @@ const Overview = () => {
 
       console.log(protocols);
 
-      // await web5.dwn.records.delete({
-      //   from: userDid,
-      //   message: {
-      //     recordId: recordId,
-      //   },
-      // });
+      const response = await web5.dwn.records.delete({
+        from: userDid,
+        message: {
+          recordId: filteredUserRecord.recordId,
+        },
+      });
+
+      console.log(response);
 
       console.log("Permissions removed successfully for user DID:", userDid);
     } catch (error) {
