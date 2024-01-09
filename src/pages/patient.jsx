@@ -1,44 +1,71 @@
 import { useContext, useState } from "react";
 import { Web5Context } from "../Utils/Web5Provider";
 import Sidebar from "../components/sidebar";
-
 import "yup-phone";
-import protocolDefinition from "../assests/Web5Protocol/protocol.json";
+import toast from "react-hot-toast";
 
 const Overview = () => {
   const { web5, myDID, patientData } = useContext(Web5Context);
 
   const [userDid, setUserDid] = useState("");
 
-  // console.log(myDID);
-
   console.log(patientData);
 
-  async function grantPermission(_recordId) {
+  async function grantPermission(recordData) {
     try {
-      const record = await web5.dwn.records.get(
-        "bafyreihcff3wwovefcdqec2zwfnittmkdfhnl4j6rebologkcecq2mpwjm"
-      );
+      const { record, status } = await web5.dwn.records.write({
+        data: recordData,
+        message: {
+          protocol: "https://github.com/sirval",
+          protocolPath: "patientRecord",
+          schema: "https://med-5.vercel.app/schema/patientRecord",
+          recipient: userDid,
+          published: true,
+        },
+      });
 
-      record.metadata.permissions[userDid] = "read";
+      await record.send(myDID);
 
-      await web5.dwn.records.update(record);
+      toast.success("Submit Successfully!");
+      if (status.code === 200) {
+        console.log(record);
+        return { ...patientData, recordId: record.id };
+      } else {
+        console.log(record);
+      }
 
-      console.log("Permissions added successfully for user DID:", userDid);
+      console.log("Record written to DWN", { record, status });
+      if (record) {
+        const { status } = await record.send(userDid);
+        console.log("Send record", status);
+      } else {
+        throw new Error("Failed to create record");
+      }
     } catch (error) {
-      console.error("Error adding permissions:", error);
+      toast.error("error occured");
+
+      console.log(error);
     }
   }
 
-  async function revokePermission(recordId, userDid) {
+  async function revokePermission(record) {
+    console.log(record);
     try {
-      const record = await Web5.dwn.records.get(recordId);
+      const { protocols } = await web5.dwn.records.query({
+        recipient: userDid,
+        message: {
+          recordId: record.recordId,
+        },
+      });
 
-      // 2. Remove the user DID from the permissions metadata
-      delete record.metadata.permissions[userDid];
+      console.log(protocols);
 
-      // 3. Republish the record with updated permissions
-      await Web5.dwn.records.update(record);
+      // await web5.dwn.records.delete({
+      //   from: userDid,
+      //   message: {
+      //     recordId: recordId,
+      //   },
+      // });
 
       console.log("Permissions removed successfully for user DID:", userDid);
     } catch (error) {
@@ -114,13 +141,13 @@ const Overview = () => {
 
                     <div className="flex justify-start gap-2 text-sm mt-2">
                       <p
-                        onClick={() => grantPermission("1")}
+                        onClick={() => grantPermission(item)}
                         className="bg-green-500 p-2 rounded text-white font-medium hover:bg-green-400 cursor-pointer"
                       >
                         add access
                       </p>
                       <p
-                        onClick={() => revokePermission(patientData, _index)}
+                        onClick={() => revokePermission(item)}
                         className="bg-red-500 p-2 rounded text-white font-medium hover:bg-red-400 cursor-pointer"
                       >
                         remove access

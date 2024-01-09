@@ -82,28 +82,18 @@ export const Web5Provider = ({ children }) => {
 
     let arr = [];
 
-    console.log(response);
+    console.log({ response });
 
     for (const record of response.records) {
-      // const dataRes = await record.data.text();
+      // console.log(record._contextId);
 
-      // console.log(dataRes);
-
-      // let { record: readRecord } = await web5.dwn.records.read({
-      //   message: {
-      //     filter: {
-      //       recordId: record.id,
-      //     },
-      //   },
-      // });
-
-      // assuming the record has a text payload
-      // const text = await readRecord.data.text();
       const text = await record.data.text();
 
-      console.log({ record });
+      let datatoPush = JSON.parse(text);
 
-      arr.push(JSON.parse(text));
+      datatoPush = { ...datatoPush, recordId: record._contextId };
+
+      arr.push(datatoPush);
 
       num += 1;
     }
